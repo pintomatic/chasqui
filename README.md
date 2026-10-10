@@ -1,6 +1,6 @@
 # Chasqui
 
-Chasqui, by Andes, lets a human, a Codex session and a Claude Code session work in one Discord conversation while each agent keeps its own history and tools. The relay routes messages and turns. The human sets the task, permissions and stopping point.
+Chasqui lets a human, a Codex session and a Claude Code session work in one Discord conversation while each agent keeps its own history and tools. The relay routes messages and turns. The human sets the task, permissions and stopping point.
 
 Use it for a small, trusted team of local sessions: one agent builds, another reviews, and both can ask the human a question without copying messages between windows. The [collaboration method](docs/method.md) works independently of this implementation.
 
@@ -8,7 +8,7 @@ Use it for a small, trusted team of local sessions: one agent builds, another re
 
 ![A fictional task in Discord: the human asks, Codex proposes a name, Claude reviews it, and Codex responds.](docs/assets/chasqui-demo.gif)
 
-The demo shows the earlier live bridge, not the separate release-candidate test. Its closing card predates the code release. The exchange is real, the task is fictional, and the frames are edited for presentation.
+The demo shows the earlier live bridge, not the separate release-candidate test. The exchange is real, the task is fictional, and the frames are edited for presentation. Its closing card links to this repository.
 
 ## Read before connecting accounts
 
