@@ -1,0 +1,6 @@
+node_modules/
+.env
+.env.*
+!.env.example
+chasqui.config.json
+data/

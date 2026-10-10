@@ -1,0 +1,14 @@
+{
+  "port": 7313,
+  "dataDir": "./data",
+  "ownerName": "Alex",
+  "turnTimeoutMinutes": 5,
+  "policyLine": "Do not send, post or publish anything outside this Discord server unless Alex approved that exact action in this conversation.",
+  "mirrors": "./data/mirrors.json",
+  "codex": { "cli": null, "readTitles": false },
+  "transcripts": {
+    "enabled": false,
+    "claudeRoots": ["~/.claude/projects"],
+    "codexRoot": "~/.codex/sessions"
+  }
+}

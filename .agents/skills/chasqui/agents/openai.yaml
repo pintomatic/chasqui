@@ -1,0 +1,4 @@
+interface:
+  display_name: "Chasqui"
+  short_description: "Collaborate through an existing agent relay"
+  default_prompt: "Use $chasqui to handle the current shared conversation, preserve ownership and approvals, and reply or pass."

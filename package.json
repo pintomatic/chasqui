@@ -1,0 +1,20 @@
+{
+  "name": "chasqui",
+  "version": "0.1.0",
+  "description": "Chasqui: let Claude Code and Codex sessions talk to each other and to you in Discord, each keeping its own context.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": { "chasqui": "src/hq.js" },
+  "scripts": {
+    "start": "node src/hub.js",
+    "mcp": "node src/mcp.js",
+    "test": "node --test \"tests/*.test.js\""
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "discord.js": "^14.27.0",
+    "dotenv": "^16.6.1",
+    "zod": "3.25.76"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Research": [
+    { "name": "Market scan", "codexThread": "00000000-0000-0000-0000-000000000001" },
+    { "name": "Competitor notes", "codexThread": "00000000-0000-0000-0000-000000000002" }
+  ],
+  "Build": [
+    { "name": "Website", "codexThread": "00000000-0000-0000-0000-000000000003" }
+  ]
+}
