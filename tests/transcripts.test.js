@@ -56,6 +56,16 @@ test("a read position returns only what was added, including multibyte text", ()
   assert.equal(next.offset, fs.statSync(codexFile).size - '{"partial":'.length);  // the partial line waits for its newline
 });
 
+test("a Codex thread that continued in a newer rollout file resolves to that file", () => {
+  const { L, codexRoot, codexFile } = setup();
+  const child = path.join(codexRoot, "2026", "10", "11", `rollout-2026-10-11T09-00-00-${CODEX_ID}_01.jsonl`);
+  fs.mkdirSync(path.dirname(child), { recursive: true });
+  fs.writeFileSync(child, codexLine("assistant", "continued"));
+  const later = new Date(fs.statSync(codexFile).mtimeMs + 60_000);
+  fs.utimesSync(child, later, later);
+  assert.equal(L.findTranscript(CODEX_ID).file, child);
+});
+
 test("rejects ids that are not UUID-shaped, so a path can't be smuggled in", () => {
   const { L } = setup();
   assert.throws(() => L.findTranscript("../../etc/passwd"), /UUID/);

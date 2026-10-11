@@ -43,14 +43,26 @@ function walk(dir, match, depth) {
   return null;
 }
 
+function collect(dir, match, depth, out) {
+  if (depth < 0 || !fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isFile() && match(e.name)) out.push(p);
+    else if (e.isDirectory()) collect(p, match, depth - 1, out);
+  }
+}
+
 function findTranscript(id, cfg = C.transcripts) {
   if (!/^[0-9a-f-]{8,}$/i.test(id)) throw new Error("session id must be a UUID");
   for (const root of cfg.claudeRoots) {
     const hit = walk(root, (n) => n === `${id}.jsonl`, 1);
     if (hit) return { harness: "claude", file: hit };
   }
-  const hit = walk(cfg.codexRoot, (n) => n.startsWith("rollout-") && n.endsWith(`${id}.jsonl`), 3);
-  if (hit) return { harness: "codex", file: hit };
+  // A Codex thread can continue in a newer rollout file ("rollout-...-<id>_<child>.jsonl"),
+  // so take the most recently written file that names the thread.
+  const hits = [];
+  collect(cfg.codexRoot, (n) => n.startsWith("rollout-") && n.includes(id) && n.endsWith(".jsonl"), 3, hits);
+  if (hits.length) return { harness: "codex", file: hits.sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs)[0] };
   throw new Error(`no transcript found for ${id}`);
 }
 
