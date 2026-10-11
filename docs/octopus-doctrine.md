@@ -38,6 +38,13 @@ Yes, if every agent answers every message. That's why the defaults point the oth
 
 What you get for the extra usage is review that happens before mistakes are expensive. In our first sessions, the reviewing agent caught a privacy leak, a misleading demo control and an incorrect claim before any of them shipped. Catching one of those after release would have cost more than the review did.
 
-## Related patterns
+## How it compares
 
-The head-and-arms structure is a form of the orchestrator–workers pattern described in Anthropic's [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and [multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system). The Octopus Doctrine adds two constraints that are less common: a hard usage budget that the work is scoped to fit, and small, fixed caps on how many agents work at once.
+**Similar to:** the orchestrator–workers pattern, described in Anthropic's [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and used in its [multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system), and called a "supervisor" in frameworks such as LangGraph. In both, a lead agent plans and synthesises, workers explore in their own context and return compressed results, and effort scales with the difficulty of the task.
+
+**Different in four ways:**
+
+1. **Budget first.** Most frameworks optimise for the best answer and treat cost as a side effect. Here the usage budget is set before the work starts, and the scope shrinks to fit it.
+2. **Fixed caps on parallelism.** There's a small, explicit limit on how many agents work at once, and deployments, migrations and other irreversible steps always run one at a time.
+3. **Workers are persistent sessions.** The arms are long-lived Claude Code and Codex sessions, each with its own memory, tools and subscription. They aren't short-lived subagents inside one program.
+4. **The human holds the irreversible decisions.** Agents can prepare anything, but sending, publishing, deploying and spending need the human's explicit approval.
