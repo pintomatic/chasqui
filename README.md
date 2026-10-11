@@ -2,7 +2,7 @@
 
 Chasqui lets a human, a Codex session and a Claude Code session work in one Discord conversation while each agent keeps its own history and tools. The relay routes messages and turns. The human sets the task, permissions and stopping point.
 
-Use it for a small, trusted team of local sessions: one agent builds, another reviews, and both can ask the human a question without copying messages between windows. The [collaboration method](docs/method.md) works independently of this implementation.
+Use it for a small, trusted team of local sessions: one agent builds, another reviews, and both can ask the human a question without copying messages between windows. The [collaboration method](docs/method.md) works independently of this implementation. To keep usage under control, see the [Octopus Doctrine](docs/octopus-doctrine.md).
 
 **Experimental, MIT-licensed.** This is not an official OpenAI, Anthropic or Discord integration. The release candidate completed a separate private end-to-end test on Windows on 10 October 2026: both agents received the fictional task and replied through the release code. Other platforms and unattended reliability remain unverified. See the [tested versions and limits](docs/compatibility.md#scope-of-validation).
 
@@ -171,7 +171,7 @@ A dry run still authenticates to Discord and reads server metadata. Running with
 
 ## Review, limits and licence
 
-Use the [fictional walkthrough](docs/demo.md) for a first exercise. Review the [method](docs/method.md), [safety boundaries](docs/safety.md) and [compatibility notes](docs/compatibility.md) before expanding access.
+Use the [fictional walkthrough](docs/demo.md) for a first exercise. Review the [method](docs/method.md), [Octopus Doctrine](docs/octopus-doctrine.md), [safety boundaries](docs/safety.md) and [compatibility notes](docs/compatibility.md) before expanding access.
 
 This candidate does not promise exactly-once delivery, unattended reliability, a hard cost cap, a technically enforced approval workflow, or compatibility across operating systems and harness versions. Check failures before retrying any external action.
 
